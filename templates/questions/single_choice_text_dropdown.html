@@ -1,0 +1,28 @@
+<div class="form-group">
+  <p><strong>{{ question['question'] }}</strong></p>
+
+  {% if question['questionContent'] is none %}
+
+  {% else %}
+
+    <select class="custom-select" id="inputGroupSelect01" name="{{ question['id'] }}.answerContent" >
+      <option>Choose...</option>
+      {% for content in question['questionContent'] %}
+        <option value="{{ content['content'] }}"> {{ content['content'] }}</option>
+      {% endfor %}
+    </select>
+
+
+    {% for content in question['questionContent'] %}
+      {% if content['count'] is defined %}
+        <p> {{ content['content'] }} </p>
+        <div style="color:blue;"><strong> Count: {{ content['count'] }}</strong></div>
+      {% endif %}
+    {% endfor %}
+
+  {% endif %}
+
+
+</div>
+
+
